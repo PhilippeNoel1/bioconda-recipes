@@ -1,0 +1,26 @@
+{% set name = "pdb2fasta" %}
+{% set version = "v1.01" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  https://gitlab.inria.fr/pnoel/pdb2fasta/-/archive/{{ version }}/pdb2fasta-{{ version }}.tar.bz2
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - rust >= 1.30.0
+    - zlib
+  run:
+    - zlib
+
+test:
+  commands:
+    - pdb2fasta --help &> /dev/null
+    
+about:
+  home: toto.com
